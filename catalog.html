@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>HTML Academy: Техномарт</title>
     <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="minimized.css">
     <link rel="icon" href="favicon.ico">
     <link rel="icon" href="img/favicon/32.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="img/favicon/180.png">
@@ -24,8 +24,8 @@
                 </svg>
             </label>
           </form>
-          <a class="button button-bookmark" href="blank.html">Закладки: 0</a>
-          <a class="button button-cart" href="blank.html">Корзина: 0</a>
+          <a class="button button-bookmark" href="blank.html">Закладки:&nbsp;<span>0</span></a>
+          <a class="button button-cart button-filled" href="blank.html">Корзина:&nbsp;<span>10</span></a> 
           <a class="button button-order" href="blank.html" >Оформить заказ</a>
         </nav>
       </div>
@@ -99,7 +99,7 @@
                     <ul class="filter-sort-list">
                       <li class="filter-sort-list-item">
                         <label class="checkbox-wrapper">
-                          <input type="checkbox" name="bosch" id="filter-bosch">
+                          <input type="checkbox" checked name="bosch" id="filter-bosch">
                           <span class="checkbox-checkmark"></span>
                           <span>BOSCH</span>
                         </label>
@@ -113,7 +113,7 @@
                       </li>
                       <li class="filter-sort-list-item">
                         <label class="checkbox-wrapper">
-                          <input type="checkbox" name="makita" id="filter-makita">
+                          <input type="checkbox" checked name="makita" id="filter-makita">
                           <span class="checkbox-checkmark"></span>
                           <span>MAKITA</span>
                         </label>
@@ -139,7 +139,7 @@
                     <ul class="filter-sort-list">
                       <li class="filter-sort-list-item">
                         <label class="radio-wrapper">
-                          <input  type="radio" name="power" id="filter-accum">
+                          <input type="radio" name="power" checked id="filter-accum">
                           <span class="radio-checkmark"></span>
                         <span>Аккумуляторные</span>
                         </label>
@@ -209,11 +209,11 @@
                   </div>
                 </li>
                 <li data-product-id="3" class="product-item product-new">
-                  <div class="product-buttons">
+                  <div class="product-buttons product-buttons-visible">
                     <a class="button products-buy">Купить</a>
                     <a href="" class="button products-bookmark">В закладки</a>
                   </div>
-                  <div class="product-image"><img src="img/items/bosch-bfg-6000.jpg" width="144" height="128" alt=""></div>
+                  <div class="product-image product-image-hidden"><img src="img/items/bosch-bfg-6000.jpg" width="144" height="128" alt=""></div>
                   <div class="product-info">
                     <a href="blank.html">
                       <h3 class="product-item-title">Перфоратор BOSCH BFG 6000</h3>
@@ -348,8 +348,10 @@
           </ul>
         </div>
         <div class="footer-nav-second">
-          <p class="footer-nav-adress">г. Санкт-Петербург, наб. Реки Карповки, 5 лит П
-            <br> +7 800 555-86-28
+          <p class="footer-nav-adress">
+            г. Санкт-Петербург, наб. Реки Карповки, 5 лит П 
+            <br>
+            <a href="tel:+78005558628">+7 800 555-86-28</a>
           </p>
           <ul class="footer-menu-second">
             <li class="second-menu-item" ><a href="blank.html">Материалы</a></li>

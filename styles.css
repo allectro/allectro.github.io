@@ -105,6 +105,8 @@ a {
   margin:0;
 }
 .nav-box {
+  display: flex;
+  flex-wrap: wrap;
   background-color:#293449;
   height: 42px;
   margin-bottom: 44px;
@@ -116,7 +118,7 @@ a {
   height: 100%;
   font-size: 18px;
   color:var(--basic-white);
-  }
+}
 .main-header-logo{
   width: 220px;
   height: 100%;
@@ -192,13 +194,13 @@ a {
   font-size: inherit;
 }
 .button-bookmark {
-  padding: 9px 22px;
+  flex-grow: 1;
 }
 .button-cart {
-  padding: 9px 26px;
+  flex-grow: 1;
 }
 .button-order {
-  padding: 9px 18px;
+  flex-grow: 1;
   background-color: var(--basic-green);
 }
 .button-bookmark::before {
@@ -814,6 +816,15 @@ a {
 .product-item:hover .product-image {
   display: none;
 }
+.product-buttons-visible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.product-image-hidden {
+  display: none;
+}
 .product-item-title {
   display: flex;
   align-items: center;
@@ -832,7 +843,6 @@ a {
   align-items: center;
   flex: 1;
 }
-
 .product-price,
 .product-discount {
   font-family: "PT Sans";
@@ -1547,6 +1557,9 @@ a {
 .footer-nav-adress {
   margin: 0;
   padding: 0;
+  color: var(--basic-background);
+}
+.footer-nav-adress a {
   color: var(--basic-background);
 }
 .footer-menu-first {
