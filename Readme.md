@@ -9,3 +9,5 @@
 5. БЭМ
 6. Pixel Perfect
 7. Прогрессивное улучшение
+<br>
+<a href="https://allectro.github.io/">Посмотреть проект</a>
