@@ -46,7 +46,7 @@ if (FeaturesSlides.length) {
   });
 }
 
-// Product buy modal
+// Product modal
 var BuyButton = document.querySelectorAll('.products-buy');
 var ShowModal = document.getElementById('modal-order');
 var CloseModal = document.querySelectorAll('.modal-close');
@@ -63,21 +63,60 @@ for (var i = 0; i < CloseModal.length; i++) {
   });
 }
 
-//ShowModal
-document.getElementById('button-feedback').addEventListener('click', function() {
-  document.getElementById('modal').classList.add("modal-visible");
-})
+window.addEventListener("keydown", function (evt) {
+  if (evt.keyCode === 27) {
+    if (ShowModal.classList.contains("modal-visible")) {
+      evt.preventDefault();
+      ShowModal.classList.remove("modal-visible");
+    }
+  }
+});
 
-document.getElementById('modal-close').addEventListener('click', function() {
-  document.getElementById('modal').classList.remove("modal-visible");
-})
+//Map
+const mapLink = document.querySelector(".contacts-map-link");
+const mapPopup = document.querySelector(".modal-map");
+const mapClose = mapPopup.querySelector(".modal-close");
 
-document.getElementById('button-map').addEventListener('click', function() {
-  document.getElementById('modal-map').classList.add("modal-visible");
-})
+mapLink.addEventListener("click", function (evt) {
+  evt.preventDefault();
+  mapPopup.classList.add("modal-visible");
+});
 
-document.getElementById('modal-close-map').addEventListener('click', function() {
-  document.getElementById('modal-map').classList.remove("modal-visible");
-})
+mapClose.addEventListener("click", function (evt) {
+  evt.preventDefault();
+  mapPopup.classList.remove("modal-visible");
+});
+
+window.addEventListener("keydown", function (evt) {
+  if (evt.keyCode === 27) {
+    if (mapPopup.classList.contains("modal-visible")) {
+      evt.preventDefault();
+      mapPopup.classList.remove("modal-visible");
+    }
+  }
+});
+
+//Feedback
+const feedbackLink = document.querySelector(".contacts-feedback-link");
+const feedbackPopup = document.querySelector(".modal-feedback");
+const feedbackClose = mapPopup.querySelector(".modal-close");
+
+feedbackLink.addEventListener("click", function (evt) {
+  evt.preventDefault();
+  feedbackPopup.classList.add("modal-visible");
+});
+
+feedbackClose.addEventListener("click", function (evt) {
+  evt.preventDefault();
+  feedbackPopup.classList.remove("modal-visible");
+});
+window.addEventListener("keydown", function (evt) {
+  if (evt.keyCode === 27) {
+    if (feedbackPopup.classList.contains("modal-visible")) {
+      evt.preventDefault();
+      feedbackPopup.classList.remove("modal-visible");
+    }
+  }
+});
 
 //сделать счетчик для корзины и закладок
