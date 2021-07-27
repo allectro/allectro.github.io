@@ -409,7 +409,7 @@ text-transform: uppercase;
 .footer-main__rules {
     margin-bottom: 7px;
 }
-@media screen and (max-width: 719px) {
+@media screen and (max-width: 599px) {
     .header-menu__list :nth-child(n+4):nth-child(-n+5) {
         display: none;
     }
