@@ -74,8 +74,12 @@ a {
     text-transform: lowercase;
     cursor: pointer;
 }
+.header-menu__item a { 
+ color: var(--basic-black);
+}
 
-.header-menu__item:last-of-type {
+.header-menu__item:last-of-type,
+.header-menu__item:last-of-type a {
     margin-right: 0;
     color: var(--special-red);
 }
