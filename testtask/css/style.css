@@ -157,7 +157,8 @@ a {
 }
 
 .button-black {
-    width: 68%;
+    width: 100%;
+    max-width: 383px;
     padding: 18px 0;
     font-size: 14px;
     line-height: 14px;
@@ -167,9 +168,8 @@ a {
     background-color: var(--basic-black);
 }
 .button-white {
-    width: calc(50% - 10px);
     margin-bottom: 18px;
-    padding: 18px 0;
+    padding: 18px 56px;
     font-size: 11px;
     font-weight: bold;
     line-height: 14px;
@@ -289,7 +289,7 @@ text-transform: uppercase;
 .main-product__link::after {
     content: "";
     margin-left: 10px;
-    background-image: url("/img/icon-arrow.svg");
+    background-image: url("../img/icon-arrow.svg");
     width: 15px;
     height: 10px;
     background-repeat: no-repeat;
@@ -413,14 +413,21 @@ text-transform: uppercase;
     margin-bottom: 7px;
 }
 @media screen and (max-width: 599px) {
-    .main {
-        padding: 0 20px 95px 20px;
+
+    .main-advantages {
+        padding: 0 20px 0 20px;
+    }
+    .main-product {
+        padding: 0 20px 0 20px; 
     }
     .button-white {
-        width: 100%;
+        font-size: 11px;
+        line-height: 150%;
     }
     .button-black {
-        width: 100%;
+        font-size: 11px;
+        line-height: 11px;
+        max-width: 280px;
     }
     .main-advantages__image {
         width: calc(100% + 40px);
