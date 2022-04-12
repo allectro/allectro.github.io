@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+
+    <title>Твой стиль</title>
+
+    <link rel="stylesheet" href="./css/telegram.css">
+
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '451258963030954');
+
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1114291812076604&ev=PageView&noscript=1" /></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1770941616422038&ev=PageView&noscript=1" /></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=5561101847264565&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <script>
+        (function(w, d, s, h, id) {
+            w.roistatProjectId = id; w.roistatHost = h;
+            var p = d.location.protocol == "https:" ? "https://" : "http://";
+            var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/"+id+"/init?referrer="+encodeURIComponent(d.location.href);
+            var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
+        })(window, document, 'script', 'cloud.roistat.com', '9fcae1a19bf23011571b33710b6573d5');
+    </script>
+
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <a href="https://telegram.org/" class="main-logo">
+            <img src="./img/telegram_logo.svg" alt="WhatsApp logo">
+
+            <span class="main-logo__title">
+                Telegram
+            </span>
+        </a>
+    </div>
+</header>
+<header class="sub-header">
+    <div class="container">
+        <a href="https://telegram.org/">
+            Don't have <b>Telegram</b> yet? Try it now!
+            <!-- <img src="./img/telegram/arrow-right.svg" alt="Arrow right icon" class="sub-header__icon"> -->
+        </a>
+    </div>
+</header>
+<main class="wrapper">
+    <div class="content">
+
+        <div class="container">
+
+            <section class="action-block">
+                <img src="./img/telegram/action-icon.svg" alt="" class="action-block__logo">
+
+                <h1 class="action-block__title">
+                   Твой потолок
+                </h1>
+            
+                <p class="action-block__paragraph">
+                    Для расчёта, консультации и записи на бесплатный замер начните чат
+                </p>
+            
+                <form class="form js-whatsapp-form" action="" method="post">
+                    <div class="form__input-field">
+                        <input type="phone" name="phone" class="form__input phone-mask" placeholder="Введите номер Telegram" value=""/>
+            
+                        <div class="error_wrapper" style="display: none"><span class="error_alert">некорректный номер</span></div>
+                    </div>
+            
+                    <button type="submit" class="form__btn js-send-btn">Начать чат</button>
+                </form>
+
+                <footer class="action-block__footer">
+                    <a href="/" class="action-block__link">
+                        Перейти в Telegram-канал
+                    </a>
+                </footer>
+            </section>
+
+        </div>
+
+    </div>
+</main>
+<script src="https://unpkg.com/imask"></script>
+<script>
+    const $ = document.querySelector
+    let phones = document.querySelectorAll("[type=phone]")
+    phones.forEach(phone => {
+        let maskOptions = {
+            mask: '+{7}(000)000-00-00'
+        },
+        mask = IMask(phone, maskOptions);
+    })
+</script>
+<script src="/js/whatsapp/jquery-3.3.1.min.js"></script>
+<script src="/js/whatsapp/jquery.inputmask.min.js"></script>
+<script src="/js/whatsapp/app.js?v=1.2"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Твой потолок</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-slider-component@latest/theme/default.css">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header class="header container">
+        <img src="./img/logo_color.svg" alt="">
+        <p>Москва и МО</p>
+        <div class="header__messengers">
+            <a href="./whatsapp.html" ><img src="./img/whatsapp_logo.svg" alt=""></a>
+            <a href="./telegram.html"><img src="./img/telegram_logo.svg" alt=""></a>
+        </div>
+        <!-- <img class="header__burg" src="./img/burger.svg" alt=""> -->
+    </header>
+    <section class="main container">
+       <div class="contacts">
+           <a class="contacts__measure">Вызвать замерщика</a>
+           <a class="contacts__phone" href="tel:8 800 775-76-11">8 800 775-76-11</a>
+       </div>
+       <h1>
+           Получите расчёт
+           <span class="c-blue t-upper">НАТЯЖНОГО ПОТОЛКА</span>
+            
+           и&nbspподарок 
+           <span class="c-blue">за&nbsp5&nbspсекунд</span>
+           <img src="./img/hourglass.svg" alt="">
+        </h1>
+        <button class="button js-show-quiz">Получить расчёт и подарок</button>
+        <img class="gift js-show-wheel" src="./img/prezent.png" alt="">
+    </section>
+    <section id="quiz" class="quiz container">
+        <div v-if="step == 1">
+            <div class="quiz__head">
+                <p class="quiz__title">Вопрос 1/3</p>
+                <p class="quiz__intro text">Укажите параметры вашего помещения</p>     
+            </div>
+            <div class="quiz__quest">
+                <p>Общая площадь:</p>
+                <vue-slider
+                    class="slider"
+                    tooltip="always"
+                    :min="1"
+                    :max="100"
+                    :step="1"
+                    :dotSize="[32, 32]"
+                    v-model="area">
+                </vue-slider>
+            </div>
+            <div class="quiz__quest">
+                <p>Количество светильников:</p>
+                <vue-slider
+                    class="slider"
+                    tooltip="always"
+                    :min="1"
+                    :max="10"
+                    :step="1"
+                    v-model="lamps">
+                </vue-slider>
+            </div>
+            <div class="quiz__quest">
+                <p>Количество углов:</p>
+                <vue-slider
+                    class="slider"
+                    tooltip="always"
+                    :min="1"
+                    :max="10"
+                    :step="1"
+                    v-model="angles">
+                </vue-slider>
+            </div>
+        </div>
+        <div v-if="step == 2">
+            <div class="quiz__head">
+                <p class="quiz__title">Вопрос 2/3</p>
+                <p class="quiz__intro text">Когда планируете сделать потолок?</p>     
+            </div>
+            <label class="quiz__quest d-grid-line">
+                <p>В ближайшие дни</p>
+                <div class="checkbox">
+                    <input v-model="when" value="В ближайшие дни" name="when" type="radio">
+                    <span class="checkmark"></span>
+                </div>
+            </label>
+            <label class="quiz__quest d-grid-line">
+                <p>В течение месяца</p>
+                <div class="checkbox">
+                    <input v-model="when" value="В течение месяца" name="when" type="radio">
+                    <span class="checkmark"></span>    
+                </div>
+                
+            </label>
+            <label class="quiz__quest d-grid-line">
+                <p>Не знаю</p>
+                <div class="checkbox">
+                    <input v-model="when" value="Не знаю" name="when" type="radio">
+                    <span class="checkmark"></span>    
+                </div>
+            </label>
+        </div>
+        <div v-if="step == 3">
+            <div class="quiz__head">
+                <p class="quiz__title">Вопрос 3/3</p>
+                <p class="quiz__intro text">Выберите подарок к потолку</p>     
+            </div>
+            <label class="quiz__quest d-grid-line">
+                <p class="d-grid-line"><img src="./img/gift_1.svg" alt=""> Второй потолок в подарок</p>
+                <div class="checkbox">
+                    <input v-model="gift" type="radio" value="Второй потолок в подарок" name="gift">
+                    <span class="checkmark"></span>    
+                </div>
+            </label>
+            <label class="quiz__quest d-grid-line">
+                <p class="d-grid-line"><img src="./img/gift_2.svg" alt="">Купон на сумму 5000₽</p>
+                <div class="checkbox">
+                    <input v-model="gift" type="radio" value="Купон на сумму 5000₽" name="gift">
+                    <span class="checkmark"></span>    
+                </div>
+                
+            </label>
+            <label class="quiz__quest d-grid-line">
+                <p class="d-grid-line"><img src="./img/gift_3.svg" alt="">Скидка до 30%</p>
+                <div class="checkbox">
+                    <input v-model="gift" type="radio" value="Скидка до 30%" name="gift">
+                    <span class="checkmark"></span>    
+                </div>
+            </label>
+        </div>
+        <div v-if="step == 4">
+            <div class="quiz__head">
+                <p class="quiz__title">Расчёт натяжного<br>потолка и&nbspподарок</p>
+            </div>
+            <form @submit.prevent="send" class="form d-grid">
+                <p class="form__intro">
+                    <span class="c-blue">Введите номер телефона</span> и&nbspполучите&nbspрасчёт на WhatsApp в&nbspтечение&nbsp5&nbspминут.
+                </p>     
+                <input class="input" type="text" placeholder="Введите ваше имя">
+                <input ref="phone" class="input" type="phone" placeholder="Введите ваш номер">
+                <button class="button">Получить расчёт и подарок
+                </button>
+                <p class="form__agree">Оставляя контактную информацию, вы соглашаетесь  
+                    на обработку персональных данных</p>
+            </form>
+            
+        </div>
+        <div v-if="step < 4" class="buttons d-grid-line">
+            <button v-if="step > 1" @click="step--" class="button button_prev">Назад</button>
+            <button @click="step++" class="button button_next">Далее</button>
+        </div> 
+    </section>
+    <section class="thanks">
+        <img class="thanks__close" src="./img/x.svg" alt="">
+        <p class="thanks__title c-blue">СПАСИБО!</p>
+        <p class="thanks__text">Заявка отправлена</p>
+    </section>
+    <section class="measure">
+        <img class="measure__close" src="./img/x.svg" alt="">
+        <form class="measure__form form d-grid">
+            <p class="form__title c-blue">ОСТАВИТЬ ЗАЯВКУ</p>
+            <p class="form__intro">Оставьте ваши данные и специалист свяжется с вами в&nbspтечение <span class="c-blue">5 минут</span></p>
+            <input class="input" type="phone" placeholder="Введите номер телефона
+            ">
+            <button class="button">Заказать звонок</button>
+            <p class="form__agree">Оставляя контактную информацию, вы соглашаетесь  
+                на обработку персональных данных</p>
+        </form>
+    </section>
+    <section id="wheel_form" class="wheel">
+        <img class="wheel__close" src="./img/x.svg" alt="">
+        <form v-if="!gift" class="wheel__form form d-grid">
+            <p class="form__title c-blue">Испытайте удачу!</p>
+            <p class="form__intro">Введите Ваш номер телефона, вращайте <span class="c-blue">КОЛЕСО УДАЧИ </span>
+                и <span class="c-blue">получите ПОДАРОК</span>
+                на WhatsApp!</p>
+            <input class="input" type="text" placeholder="Введите ваше имя">
+            <input ref="phone" class="input" type="phone" placeholder="Введите номер телефона
+            ">
+            <button @click.prevent="spin" class="button">Крутить колесо</button>
+            <p class="form__agree">Оставляя контактную информацию, вы соглашаетесь  
+                на обработку персональных данных</p>
+            <img class="wheel__arrow" src="./img/arrow.svg" alt="">
+            <img class="wheel__img" src="./img/wheel.svg" alt="">
+        </form>
+        <div v-if="gift == 1" class="wheel__success d-grid">
+            <p class="wheel__title c-blue">Поздравляем!</p>
+            <p class="wheel__intro">ВАШ ВЫИГРЫШ:</p>
+            <p class="wheel__result c-blue d-grid-line"><img src="./img/gift_1.svg"> Купон на сумму 5000₽</p>
+            <p class="wheel__agree">
+                <img src="./img/!.svg" alt="">
+                Купон действует на заказ от 50 000 ₽, 
+                если сумма заказа меньше, 
+                можно&nbspиспользовать 10% скидки.</p>
+            <p class="c-blue">Не пропустите звонок,<br>
+                мы скоро свяжемся в Вами!</p>
+            <img class="wheel__arrow" src="./img/arrow.svg" alt="">
+            <img style="transform: rotate(-15deg)" class="wheel__img" src="./img/wheel.svg" alt="">
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/imask"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-slider-component@3.2.15/dist/vue-slider-component.umd.min.js"></script>
+    <script>
+        const $ = document.querySelector
+        let phones = document.querySelectorAll("[type=phone]")
+        phones.forEach(phone => {
+            let maskOptions = {
+                mask: '+{7}(900)000-00-00'
+            },
+            mask = IMask(phone, maskOptions);
+        })
+        let wheel = new Vue({
+            el: '#wheel_form',
+            data: {
+                gift: null
+            },
+            mounted: function () {
+                setTimeout(() => {
+                    mask = new IMask(this.$refs.phone,{
+                        mask: '+{7}(900)000-00-00'
+                    });
+                    console.log(mask)
+                }, 500)
+            },
+            methods: {
+                spin () {
+                   phoneLength = document.querySelector("#wheel_form > form > input:nth-child(4)").value.length
+                   if (phoneLength < 16) {
+                       return
+                   }
+                    let wheel = document.querySelector('.wheel__img');
+                    wheel.classList.add('rotate-me')
+                    setTimeout(() => {
+                        this.gift = 1
+                    }, 10000)
+                }
+            }
+        })
+        let quiz = new Vue({
+            el: '#quiz',
+            components: {
+                vueSlider: window[ 'vue-slider-component' ],
+            },
+            data: {
+                step: 1,
+                area: 58,
+                angles: 4,
+                when: "",
+                gift: "",
+                lamps: 6
+            },
+            watch: {
+                step: function (val) {
+                    console.log(this.$refs) // Shows the mapRef object reference
+                    console.log(this.$refs.phone) // returns undefined ???
+                    console.log(val)
+                    if (this.step == 4) {
+                        let phones = document.querySelectorAll("[type=phone]")
+                            setTimeout(() => {
+                                mask = new IMask(this.$refs.phone,{
+                                    mask: '+{7}(900)000-00-00'
+                                });
+                                console.log(mask)
+                            }, 500)
+                           
+                    }
+                }
+            },
+            methods: {
+                send () {
+                    phoneLength = this.$refs.phone.value.length
+                    if (phoneLength < 16) {
+                        return
+                    }
+                    console.log('sending...', this)
+                    document.querySelector('.quiz').style.display = 'none';
+                    document.querySelector('.thanks').style.display = 'grid';
+
+                }
+            }
+        })
+        
+        document.querySelector('.js-show-quiz').onclick = event => {
+            document.querySelector('.quiz').style.display = 'grid';
+        }
+        document.querySelector('.js-show-wheel').onclick = event => {
+            document.querySelector('.wheel').style.display = 'grid';
+        }
+        document.querySelector('.thanks__close').onclick = event => {
+            document.querySelector('.thanks').style.display = 'none';
+        }
+        document.querySelector('.measure__close').onclick = event => {
+            document.querySelector('.measure').style.display = 'none';
+        }
+        document.querySelector('.wheel__close').onclick = event => {
+            document.querySelector('.wheel').style.display = 'none';
+        }
+
+        document.querySelector('.contacts__measure').onclick = event => {
+            document.querySelector('.measure').style.display = 'grid';
+        }
+        document.querySelector('.measure__form').onsubmit = event => {
+            event.preventDefault();
+            
+            phoneLength = document.querySelector(".measure__form input").value.length
+            if (phoneLength < 16) {
+                return
+            }
+            document.querySelector('.measure__close').click();
+            document.querySelector('.thanks').style.display = 'grid';
+        }
+
+    </script>
+</body>
+</html>
